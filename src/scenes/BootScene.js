@@ -39,11 +39,11 @@ export default class BootScene extends Phaser.Scene {
     // Only assets needed for Preloader Scene
     this.load.image(
       "preload-bg",
-      assetPath("assets/Images/PreloaderScene/Background.avif"),
+      assetPath("GameAssets/Images/PreloaderScene/Background.avif"),
     );
     this.load.image(
       "preload-logo",
-      assetPath("assets/Images/PreloaderScene/Starvowels.avif"),
+      assetPath("GameAssets/Images/PreloaderScene/Starvowels.avif"),
     );
   }
 

@@ -126,73 +126,76 @@ export default class PreloaderScene extends Phaser.Scene {
     });
 
     //-----------------------------------
-    // Load Game Assets
+    // Load Game GameAssets
     //-----------------------------------
 
     // Backgrounds
     this.load.image(
       "playBtn",
-      assetPath("assets/Images/PreloaderScene/start.png"),
+      assetPath("GameAssets/Images/PreloaderScene/start.png"),
     );
     this.load.image(
       "gameInctructions",
-      assetPath("assets/Images/PreloaderScene/HowtoPlay.png"),
+      assetPath("GameAssets/Images/PreloaderScene/HowtoPlay.png"),
     );
 
     this.load.image(
       "bunny",
-      assetPath("assets/Images/PreloaderScene/Avatar.png"),
+      assetPath("GameAssets/Images/PreloaderScene/Avatar.png"),
     );
 
     // ==========================================
-    // EASY GAME SCENE ASSETS
+    // EASY GAME SCENE GameAssets
     // ==========================================
 
     this.load.image(
       "dropBlue",
-      assetPath("assets/Images/gameScene/Star1.avif"),
+      assetPath("GameAssets/Images/gameScene/Star1.avif"),
     );
 
     this.load.image(
       "dropGolden",
-      assetPath("assets/Images/gameScene/star2.avif"),
+      assetPath("GameAssets/Images/gameScene/star2.avif"),
     );
 
     this.load.image(
       "dropGreen",
-      assetPath("assets/Images/gameScene/star3.avif"),
+      assetPath("GameAssets/Images/gameScene/star3.avif"),
     );
 
     this.load.image(
       "dropLightBlue",
-      assetPath("assets/Images/gameScene/star4.avif"),
+      assetPath("GameAssets/Images/gameScene/star4.avif"),
     );
 
     this.load.image(
       "dropLightGreen",
-      assetPath("assets/Images/gameScene/star5.avif"),
+      assetPath("GameAssets/Images/gameScene/star5.avif"),
     );
 
     this.load.image(
       "dropPink",
-      assetPath("assets/Images/gameScene/star6.avif"),
+      assetPath("GameAssets/Images/gameScene/star6.avif"),
     );
 
     this.load.image(
       "dropPurple",
-      assetPath("assets/Images/gameScene/star7.avif"),
+      assetPath("GameAssets/Images/gameScene/star7.avif"),
     );
 
-    this.load.image("dropRed", assetPath("assets/Images/gameScene/star8.avif"));
+    this.load.image(
+      "dropRed",
+      assetPath("GameAssets/Images/gameScene/star8.avif"),
+    );
 
     this.load.image(
       "dropSkyBlue",
-      assetPath("assets/Images/gameScene/star9.avif"),
+      assetPath("GameAssets/Images/gameScene/star9.avif"),
     );
 
     this.load.image(
       "dropYellow",
-      assetPath("assets/Images/gameScene/star10.avif"),
+      assetPath("GameAssets/Images/gameScene/star10.avif"),
     );
 
     // ==========================================
@@ -201,12 +204,12 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.load.image(
       "scorePanel",
-      assetPath("assets/Images/gameScene/Score.avif"),
+      assetPath("GameAssets/Images/gameScene/Score.avif"),
     );
 
     this.load.image(
       "missedPanel",
-      assetPath("assets/Images/gameScene/Missed.avif"),
+      assetPath("GameAssets/Images/gameScene/Missed.avif"),
     );
 
     // ==========================================
@@ -215,7 +218,7 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.load.image(
       "playRabbit",
-      assetPath("assets/Images/gameScene/DanceAvatar.avif"),
+      assetPath("GameAssets/Images/gameScene/DanceAvatar.avif"),
     );
 
     // ==========================================
@@ -224,76 +227,79 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.load.image(
       "gameOverPopup",
-      assetPath("assets/Images/gameOverScene/popup.avif"),
+      assetPath("GameAssets/Images/gameOverScene/popup.avif"),
     );
 
     this.load.image(
       "gameOverHome",
-      assetPath("assets/Images/gameOverScene/home.avif"),
+      assetPath("GameAssets/Images/gameOverScene/home.avif"),
     );
 
     this.load.image(
       "missedIcon",
-      assetPath("assets/Images/gameOverScene/MissedVowels.png"),
+      assetPath("GameAssets/Images/gameOverScene/MissedVowels.png"),
     );
 
     this.load.image(
       "gameOverPlayAgain",
-      assetPath("assets/Images/gameOverScene/Playagain.avif"),
+      assetPath("GameAssets/Images/gameOverScene/Playagain.avif"),
     );
 
     this.load.image(
       "gameOverRabbit",
-      assetPath("assets/Images/gameOverScene/Greatjob.avif"),
+      assetPath("GameAssets/Images/gameOverScene/Greatjob.avif"),
     );
 
     this.load.image(
       "gameOverStar",
-      assetPath("assets/Images/gameOverScene/Star.avif"),
+      assetPath("GameAssets/Images/gameOverScene/Star.avif"),
     );
 
     this.load.image(
       "gameOverStarEmpty",
-      assetPath("assets/Images/gameOverScene/Star2.avif"),
+      assetPath("GameAssets/Images/gameOverScene/Star2.avif"),
     );
 
     this.load.image(
       "gameOverScoreLabel",
-      assetPath("assets/Images/gameOverScene/Yourscore.avif"),
+      assetPath("GameAssets/Images/gameOverScene/Yourscore.avif"),
     );
 
     this.load.image(
       "gameOverOverlay",
-      assetPath("assets/Images/gameOverScene/overlay.png"),
+      assetPath("GameAssets/Images/gameOverScene/overlay.png"),
     );
 
     this.load.atlas(
       "flares",
-      assetPath("assets/Particles/flares.png"),
-      assetPath("assets/Particles/flares.json"),
+      assetPath("GameAssets/Particles/flares.png"),
+      assetPath("GameAssets/Particles/flares.json"),
     );
 
     ///////////audio//////////////
 
-    this.load.audio("gameplayMusic", assetPath("assets/Audio/bgSound.mp3"));
+    this.load.audio("gameplayMusic", assetPath("GameAssets/Audio/bgSound.mp3"));
     this.load.audio(
       "buttonClickSound",
-      assetPath("assets/Audio/buttonClickSound.mp3"),
+      assetPath("GameAssets/Audio/buttonClickSound.mp3"),
     );
     this.load.audio(
       "gameOverSound",
-      assetPath("assets/Audio/gameOverSound.mp3"),
+      assetPath("GameAssets/Audio/gameOverSound.mp3"),
     );
     this.load.audio(
       "wrongSelectionSound",
-      assetPath("assets/Audio/wrongSelectionSound.mp3"),
+      assetPath("GameAssets/Audio/wrongSelectionSound.mp3"),
     );
-    this.load.audio("popSound", assetPath("assets/Audio/popSound.mp3"));
-    this.load.audio("clockSound", assetPath("assets/Audio/clockTicSound.mp3"));
+    this.load.audio("popSound", assetPath("GameAssets/Audio/popSound.mp3"));
+    this.load.audio(
+      "clockSound",
+      assetPath("GameAssets/Audio/clockTicSound.mp3"),
+    );
 
     this.load.audio(
       "starCollectionSound",
-      assetPath("assets/Audio/starCollectionSound.mp3"),
+      assetPath("GameAssets/Audio/starCollectionSound.mp3"),
     );
 
     //-----------------------------------
