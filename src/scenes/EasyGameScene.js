@@ -16,6 +16,8 @@ export default class EasyGameScene extends Phaser.Scene {
     this.vowelsCollected = 0;
     this.levelCompleting = false;
     this.gameOver = false;
+    this.totalDrops = this.level + 2;
+    this.requiredVowels = Math.min(this.totalDrops, 5);
 
     ////////timer/////
 
@@ -235,7 +237,7 @@ export default class EasyGameScene extends Phaser.Scene {
 
   createRabbit() {
     this.bunny = this.add.image(
-      this.scale.width / 2 - 250,
+      this.scale.width / 2 - 350,
       this.scale.height - 280,
       "playRabbit",
     );
@@ -288,7 +290,7 @@ export default class EasyGameScene extends Phaser.Scene {
   }
 
   getLevelDrops() {
-    const drops = [
+    const vowels = [
       {
         letter: "A",
         texture: "dropGreen",
@@ -309,7 +311,9 @@ export default class EasyGameScene extends Phaser.Scene {
         letter: "U",
         texture: "dropBlue",
       },
+    ];
 
+    const consonants = [
       {
         letter: "B",
         texture: "dropPink",
@@ -332,7 +336,13 @@ export default class EasyGameScene extends Phaser.Scene {
       },
     ];
 
-    return Phaser.Utils.Array.Shuffle(drops);
+    const vowelDrops = vowels.slice(0, this.requiredVowels);
+    const consonantDrops = Array.from(
+      { length: this.totalDrops - this.requiredVowels },
+      (_, index) => consonants[index % consonants.length],
+    );
+
+    return Phaser.Utils.Array.Shuffle([...vowelDrops, ...consonantDrops]);
   }
 
   createRaindrop(dropData, index) {
@@ -343,9 +353,9 @@ export default class EasyGameScene extends Phaser.Scene {
     const dropImage = this.add.image(0, 0, dropData.texture);
 
     const letter = this.add.text(0, 10, dropData.letter, {
-      fontFamily: "Fredoka",
-      fontSize: "72px",
-      fontStyle: "bold",
+      fontFamily: "FredokaCondensed",
+      fontSize: "150px",
+      fontStyle: "normal",
       color: "#ffffff",
       stroke: "#1764c0",
       strokeThickness: 7,
@@ -371,22 +381,114 @@ export default class EasyGameScene extends Phaser.Scene {
   }
 
   getDropPosition(index) {
-    const positions = [
-      { x: 160, y: 430 },
-      { x: 410, y: 450 },
-      { x: 680, y: 450 },
-      { x: 920, y: 440 },
+    const positionsByDropCount = {
+      // Level 1: triangle
+      3: [
+        { x: 540, y: 520 },
+        { x: 300, y: 900 },
+        { x: 800, y: 900 },
+      ],
 
-      { x: 250, y: 750 },
-      { x: 530, y: 800 },
-      { x: 800, y: 770 },
+      // Level 2: rectangle
+      4: [
+        { x: 300, y: 520 },
+        { x: 750, y: 520 },
+        { x: 300, y: 1000 },
+        { x: 750, y: 1000 },
+      ],
 
-      { x: 150, y: 1100 },
-      { x: 450, y: 1100 },
-      { x: 760, y: 1150 },
-    ];
+      // Level 3: two upper, one middle, two lower
+      5: [
+        { x: 300, y: 520 },
+        { x: 750, y: 520 },
+        { x: 540, y: 820 },
+        { x: 300, y: 1140 },
+        { x: 750, y: 1140 },
+      ],
 
-    return positions[index];
+      // Level 4: two rows of three
+      6: [
+        { x: 250, y: 520 },
+        { x: 540, y: 520 },
+        { x: 850, y: 520 },
+        { x: 250, y: 1000 },
+        { x: 550, y: 1000 },
+        { x: 900, y: 1000 },
+      ],
+
+      // Later levels continue with balanced rows of up to three.
+      7: [
+        { x: 200, y: 500 },
+        { x: 540, y: 500 },
+        { x: 850, y: 500 },
+        { x: 200, y: 900 },
+        { x: 540, y: 900 },
+        { x: 880, y: 900 },
+        { x: 540, y: 1300 },
+      ],
+      8: [
+        { x: 200, y: 500 },
+        { x: 540, y: 500 },
+        { x: 880, y: 500 },
+        { x: 200, y: 900 },
+        { x: 540, y: 900 },
+        { x: 880, y: 900 },
+        { x: 390, y: 1300 },
+        { x: 690, y: 1300 },
+      ],
+      9: [
+        { x: 200, y: 500 },
+        { x: 540, y: 500 },
+        { x: 880, y: 500 },
+        { x: 200, y: 850 },
+        { x: 540, y: 850 },
+        { x: 880, y: 850 },
+        { x: 200, y: 1200 },
+        { x: 540, y: 1200 },
+        { x: 880, y: 1200 },
+      ],
+      10: [
+        { x: 200, y: 450 },
+        { x: 540, y: 450 },
+        { x: 880, y: 450 },
+        { x: 200, y: 780 },
+        { x: 540, y: 780 },
+        { x: 880, y: 780 },
+        { x: 200, y: 1110 },
+        { x: 540, y: 1110 },
+        { x: 880, y: 1110 },
+        { x: 540, y: 1440 },
+      ],
+      11: [
+        { x: 200, y: 420 },
+        { x: 540, y: 420 },
+        { x: 880, y: 420 },
+        { x: 200, y: 730 },
+        { x: 540, y: 730 },
+        { x: 880, y: 730 },
+        { x: 200, y: 1040 },
+        { x: 540, y: 1040 },
+        { x: 880, y: 1040 },
+        { x: 390, y: 1350 },
+        { x: 690, y: 1350 },
+      ],
+      12: [
+        { x: 200, y: 400 },
+        { x: 540, y: 400 },
+        { x: 880, y: 400 },
+        { x: 200, y: 700 },
+        { x: 540, y: 700 },
+        { x: 880, y: 700 },
+        { x: 200, y: 1000 },
+        { x: 540, y: 1000 },
+        { x: 880, y: 1000 },
+        { x: 200, y: 1300 },
+        { x: 540, y: 1300 },
+        { x: 880, y: 1300 },
+      ],
+    };
+
+    return positionsByDropCount[this.totalDrops][index];
   }
 
   addDropAnimation(drop) {
@@ -587,7 +689,7 @@ export default class EasyGameScene extends Phaser.Scene {
   }
 
   checkLevelComplete() {
-    if (this.vowelsCollected !== 5 || this.levelCompleting) {
+    if (this.vowelsCollected !== this.requiredVowels || this.levelCompleting) {
       return;
     }
 

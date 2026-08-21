@@ -56,13 +56,13 @@ export default class BootScene extends Phaser.Scene {
 
   async loadFont() {
     try {
-      await document.fonts.load('700 72px "Fredoka"');
+      await document.fonts.load('700 72px "FredokaCondensed"');
 
-      console.log("Fredoka font loaded");
+      console.log("FredokaCondensed font loaded");
 
       this.scene.start("PreloaderScene");
     } catch (error) {
-      console.error("Failed to load Fredoka:", error);
+      console.error("Failed to load FredokaCondensed:", error);
 
       // Continue anyway
       this.scene.start("PreloaderScene");
