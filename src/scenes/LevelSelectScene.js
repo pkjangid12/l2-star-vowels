@@ -98,7 +98,12 @@ export default class LevelSelectScene extends Phaser.Scene {
       this.cameras.main.fadeOut(350);
 
       this.cameras.main.once("camerafadeoutcomplete", () => {
-        this.scene.start("EasyGameScene");
+        this.scene.start("EasyGameScene", {
+          level: 1,
+          score: 0,
+          missed: 0,
+          won: false,
+        });
       });
     });
 

@@ -346,9 +346,10 @@ export default class EasyGameScene extends Phaser.Scene {
   }
 
   createRaindrop(dropData, index) {
-    const position = this.getDropPosition(index);
+    const targetPosition = this.getDropPosition(index);
+    const startY = -Phaser.Math.Between(180, 420);
 
-    const container = this.add.container(position.x, position.y);
+    const container = this.add.container(targetPosition.x, startY);
 
     const dropImage = this.add.image(0, 0, dropData.texture);
 
@@ -367,17 +368,13 @@ export default class EasyGameScene extends Phaser.Scene {
 
     container.setSize(dropImage.displayWidth, dropImage.displayHeight);
 
-    container.setInteractive({
-      useHandCursor: true,
-    });
-
     container.letter = dropData.letter;
 
     container.isVowel = this.isVowel(dropData.letter);
 
     container.on("pointerdown", () => this.onRaindropClicked(container));
 
-    this.addDropAnimation(container);
+    this.addDropAnimation(container, targetPosition.y, index);
   }
 
   getDropPosition(index) {
@@ -491,26 +488,39 @@ export default class EasyGameScene extends Phaser.Scene {
     return positionsByDropCount[this.totalDrops][index];
   }
 
-  addDropAnimation(drop) {
+  addDropAnimation(drop, targetY, index) {
     this.tweens.add({
       targets: drop,
-      y: drop.y + 40,
+      y: targetY,
       duration: 1200,
-      yoyo: true,
-      repeat: -1,
-      ease: "Sine.easeInOut",
-    });
+      delay: index * 120,
+      ease: "Back.easeOut",
+      onComplete: () => {
+        drop.setInteractive({
+          useHandCursor: true,
+        });
 
-    this.tweens.add({
-      targets: drop,
-      angle: {
-        from: -5,
-        to: 5,
+        this.tweens.add({
+          targets: drop,
+          y: targetY + 40,
+          duration: 1200,
+          yoyo: true,
+          repeat: -1,
+          ease: "Sine.easeInOut",
+        });
+
+        this.tweens.add({
+          targets: drop,
+          angle: {
+            from: -5,
+            to: 5,
+          },
+          duration: 1400,
+          yoyo: true,
+          repeat: -1,
+          ease: "Sine.easeInOut",
+        });
       },
-      duration: 1400,
-      yoyo: true,
-      repeat: -1,
-      ease: "Sine.easeInOut",
     });
   }
 

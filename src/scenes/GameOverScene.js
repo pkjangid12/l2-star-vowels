@@ -229,12 +229,16 @@ export default class GameOverScene extends Phaser.Scene {
     );
 
     this.makeButtonInteractive(this.playAgainButton, () => {
-      this.scene.start("EasyGameScene", {
-        level: 1,
-        score: 0,
-        missed: 0,
-        won: false,
-      });
+      this.startFreshGame();
+    });
+  }
+
+  startFreshGame() {
+    this.scene.start("EasyGameScene", {
+      level: 1,
+      score: 0,
+      missed: 0,
+      won: false,
     });
   }
 
